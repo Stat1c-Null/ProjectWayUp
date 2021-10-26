@@ -4,33 +4,37 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    public Transform pos1, pos2;
+    public List<Transform> points;
+    public Transform platform;
+    public Transform pos1;
+    public Transform pos2;
+    int goalPoint = 0;
     public float speed;
-    public Transform startPos;
-
-    Vector3 nextPos;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        nextPos = startPos.position;
-    }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        //Ones platform reaches first position, make it go back to second one
-        if(transform.position == pos1.position)
+        MoveToNextPoint();
+    }
+    
+    void MoveToNextPoint()
+    {
+        //Change the position of the platform
+        platform.position = Vector2.MoveTowards(platform.position, points[goalPoint].position, Time.deltaTime * speed);
+        //Check if we are close to next point
+        if(Vector2.Distance(platform.position, points[goalPoint].position) < 0.1f)
         {
-            nextPos = pos2.position;
-        }
-        else if(transform.position == pos2.position)
-        {
-            nextPos = pos1.position;
+            //If player reached point, change it to next point
+            if(goalPoint == points.Count - 1)
+            {
+                goalPoint = 0;
+            } else
+            {
+                goalPoint++;
+            }
+            //Check if platform reached last point
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, nextPos, speed*Time.deltaTime);
     }
 
     private void OnDrawGizmos()

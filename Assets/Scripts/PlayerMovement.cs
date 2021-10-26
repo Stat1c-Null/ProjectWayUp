@@ -27,12 +27,9 @@ public class PlayerMovement : MonoBehaviour
         //Horizontal input
         mx = Input.GetAxisRaw("Horizontal");
         //Jumping
-        if(Input.GetButtonDown("Jump") && IsGrounded())//Dont let player jump unless his on the ground
+        if (Input.GetButtonDown("Jump") && IsGrounded())//Dont let player jump unless his on the ground
         {
             Jump();
-        } else if(Input.GetButtonDown("Jump") && OnSide())
-        {
-            GetOffSide();
         }
 
         //ANIMATIONS
@@ -76,13 +73,6 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = movement;
     }
 
-    void GetOffSide()
-    {
-        Vector2 movement = new Vector2(jumpForce*5, jumpForce / 2);
-
-        rb.velocity = movement;
-    }
-
     //Check for collision with ground
     public bool IsGrounded ()
     {
@@ -95,15 +85,5 @@ public class PlayerMovement : MonoBehaviour
 
         return false;
     }
-    //Check for side collision
-    public bool OnSide()
-    {
-        Collider2D sideCheck1 = Physics2D.OverlapCircle(side1.position, 0.5f, groundLayers);
-        Collider2D sideCheck2 = Physics2D.OverlapCircle(side2.position, 0.5f, groundLayers);
-        if (sideCheck1 != null || sideCheck2 != null)
-        {
-            return true;
-        }
-        return false;
-    }
+
 }
