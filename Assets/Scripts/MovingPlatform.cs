@@ -9,7 +9,7 @@ public class MovingPlatform : MonoBehaviour
     public Transform pos1;
     public Transform pos2;
     int goalPoint = 0;
-    public float speed;
+    public float speed = 3.0f;
 
     // Update is called once per frame
     private void Update()

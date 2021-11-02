@@ -8,11 +8,9 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     float mx;
     public Transform feet;
-    public Transform side1;
-    public Transform side2;
     public float jumpForce;
     public LayerMask groundLayers;//Return layer on which player stands
-    public GameObject player;
+
     public Animator anim;
     // Start is called before the first frame update
     void Start()
@@ -23,11 +21,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         //Horizontal input
         mx = Input.GetAxisRaw("Horizontal");
         //Jumping
-        if (Input.GetButtonDown("Jump") && IsGrounded())//Dont let player jump unless his on the ground
+        if(Input.GetButtonDown("Jump") && IsGrounded())//Dont let player jump unless his on the ground
         {
             Jump();
         }
@@ -57,8 +54,6 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("IsGrounded", IsGrounded());//Make function return whether his grounded or not
     }
 
-
-
     private void FixedUpdate()
     {
         Vector2 movement = new Vector2(mx * movementSpeed, rb.velocity.y);
@@ -85,5 +80,4 @@ public class PlayerMovement : MonoBehaviour
 
         return false;
     }
-
 }
