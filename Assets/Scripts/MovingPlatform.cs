@@ -8,8 +8,9 @@ public class MovingPlatform : MonoBehaviour
     public Transform platform;
     public Transform pos1;
     public Transform pos2;
+    public Transform pos3;
     int goalPoint = 0;
-    public float speed = 3.0f;
+    public float speed;
 
     // Update is called once per frame
     private void Update()
@@ -40,5 +41,6 @@ public class MovingPlatform : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawLine(pos1.position, pos2.position);
+        Gizmos.DrawLine(pos2.position, pos3.position);
     }
 }
