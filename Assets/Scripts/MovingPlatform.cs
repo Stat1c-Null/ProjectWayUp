@@ -8,7 +8,6 @@ public class MovingPlatform : MonoBehaviour
     public Transform platform;
     public Transform pos1;
     public Transform pos2;
-    public Transform pos3;
     int goalPoint = 0;
     public float speed;
 
@@ -36,11 +35,5 @@ public class MovingPlatform : MonoBehaviour
             //Check if platform reached last point
         }
 
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawLine(pos1.position, pos2.position);
-        Gizmos.DrawLine(pos2.position, pos3.position);
     }
 }
