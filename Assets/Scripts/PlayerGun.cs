@@ -11,9 +11,12 @@ public class PlayerGun : MonoBehaviour
         public Vector3 gunEndPointPosition;
         public Vector3 shootPosition;
     }
-
-    private Transform aimTransform;
+    public GameObject bullet;
+    public GameObject bulletSpawnPoint;
+    public Transform aimTransform;
     private Transform aimGunEndPointTransform;
+    public Vector3 aimDirection;
+    public float angle;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -25,6 +28,7 @@ public class PlayerGun : MonoBehaviour
     void Update()
     {
         Aim();
+        Shoot();
     }
 
     void Aim()
@@ -39,12 +43,12 @@ public class PlayerGun : MonoBehaviour
     void Shoot()
     {
         if (Input.GetMouseButtonDown(0)) {
-            Vector3 mousePos = GetMouseWorldPosition();
-
-            OnShoot.Invoke(this, new OnShootEventArgs {
-                gunEndPointPosition = aimGunEndPointTransform.position, 
-                shootPosition = mousePos
-            });
+            //Vector3 mousePos = GetMouseWorldPosition();
+            //OnShoot.Invoke(this, new OnShootEventArgs {
+             //   gunEndPointPosition = aimGunEndPointTransform.position, 
+              //  shootPosition = mousePos
+            //});
+            Instantiate(bullet.transform, bulletSpawnPoint.transform.position, aimTransform.rotation);
         }
     }
     

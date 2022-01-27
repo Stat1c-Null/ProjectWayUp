@@ -1897,6 +1897,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fd942c7896403549ac44ced45274483, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: 845695047592180001, guid: b22d191b49c12ca4fa4d7b5dc4ccd9bb, type: 3}
+  bulletSpawnPoint: {fileID: 2016400966}
+  aimTransform: {fileID: 0}
+  angle: 0
 --- !u!1 &1577541875
 GameObject:
   m_ObjectHideFlags: 0
@@ -2131,7 +2135,7 @@ GameObject:
   m_Layer: 7
   m_Name: GunEndPoint
   m_TagString: Untagged
-  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
